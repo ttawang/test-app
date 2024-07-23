@@ -106,8 +106,11 @@
     function simpan(elem) {
         var form = $('#form')[0];
         var formData = new FormData(form);
+        var id = formData.get('id');
+        var uri = (id) ? 'update' : 'simpan';
+
         $.ajax({
-            url: `{{ url('user/simpan') }}`,
+            url: `{{ url('user/') }}${uri}`,
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
